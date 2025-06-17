@@ -195,7 +195,7 @@ rtpimageproc_BINARY_DIR:STATIC=D:/Study/DATN/Code/AI_server/cpp/build
 rtpimageproc_IS_TOP_LEVEL:STATIC=ON
 
 //Dependencies for the target
-rtpimageproc_LIB_DEPENDS:STATIC=general;opencv_world4110;general;onnxruntime;
+rtpimageproc_LIB_DEPENDS:STATIC=general;opencv_world4110;general;onnxruntime;general;avcodec;general;avformat;general;avutil;general;swscale;
 
 //Value Computed by CMake
 rtpimageproc_SOURCE_DIR:STATIC=D:/Study/DATN/Code/AI_server/cpp

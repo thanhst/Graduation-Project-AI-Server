@@ -10,6 +10,8 @@ async def main():
         handle_connection,
         "0.0.0.0",
         get_dotenv("PORT"),
+        ping_interval=None,
+        ping_timeout=None
     ):
         print("WSS server listening on port 8082 with TLS")
         await asyncio.Future()

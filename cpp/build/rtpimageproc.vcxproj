@@ -86,7 +86,7 @@
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>D:\Study\DATN\Code\AI_server\cpp\.\lib\opencv\include;D:\Study\DATN\Code\AI_server\cpp\.\lib\onnxruntime\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\Study\DATN\Code\AI_server\cpp\.\lib\opencv\include;D:\Study\DATN\Code\AI_server\cpp\.\lib\onnxruntime\include;D:\Study\DATN\Code\AI_server\cpp\.\lib\ffmpeg\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AdditionalOptions>%(AdditionalOptions) /external:I "C:/Python311/Lib/site-packages/pybind11/include" /external:I "C:/Python311/Include"</AdditionalOptions>
       <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
@@ -109,10 +109,10 @@
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_DEBUG;_WINDOWS;VERSION_INFO=0.1.0;CMAKE_INTDIR=\"Debug\";rtpimageproc_EXPORTS</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>D:\Study\DATN\Code\AI_server\cpp\.\lib\opencv\include;D:\Study\DATN\Code\AI_server\cpp\.\lib\onnxruntime\include;C:\Python311\Lib\site-packages\pybind11\include;C:\Python311\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\Study\DATN\Code\AI_server\cpp\.\lib\opencv\include;D:\Study\DATN\Code\AI_server\cpp\.\lib\onnxruntime\include;D:\Study\DATN\Code\AI_server\cpp\.\lib\ffmpeg\include;C:\Python311\Lib\site-packages\pybind11\include;C:\Python311\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Midl>
-      <AdditionalIncludeDirectories>D:\Study\DATN\Code\AI_server\cpp\.\lib\opencv\include;D:\Study\DATN\Code\AI_server\cpp\.\lib\onnxruntime\include;C:\Python311\Lib\site-packages\pybind11\include;C:\Python311\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\Study\DATN\Code\AI_server\cpp\.\lib\opencv\include;D:\Study\DATN\Code\AI_server\cpp\.\lib\onnxruntime\include;D:\Study\DATN\Code\AI_server\cpp\.\lib\ffmpeg\include;C:\Python311\Lib\site-packages\pybind11\include;C:\Python311\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
@@ -120,8 +120,8 @@
       <ProxyFileName>%(Filename)_p.c</ProxyFileName>
     </Midl>
     <Link>
-      <AdditionalDependencies>opencv_world4110.lib;onnxruntime.lib;C:\Python311\libs\python311.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
-      <AdditionalLibraryDirectories>D:/Study/DATN/Code/AI_server/cpp/./lib/opencv/lib;D:/Study/DATN/Code/AI_server/cpp/./lib/opencv/lib/$(Configuration);D:/Study/DATN/Code/AI_server/cpp/./lib/onnxruntime/lib;D:/Study/DATN/Code/AI_server/cpp/./lib/onnxruntime/lib/$(Configuration);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>opencv_world4110.lib;onnxruntime.lib;avcodec.lib;avformat.lib;avutil.lib;swscale.lib;C:\Python311\libs\python311.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>D:/Study/DATN/Code/AI_server/cpp/./lib/opencv/lib;D:/Study/DATN/Code/AI_server/cpp/./lib/opencv/lib/$(Configuration);D:/Study/DATN/Code/AI_server/cpp/./lib/onnxruntime/lib;D:/Study/DATN/Code/AI_server/cpp/./lib/onnxruntime/lib/$(Configuration);D:/Study/DATN/Code/AI_server/cpp/./lib/ffmpeg/lib;D:/Study/DATN/Code/AI_server/cpp/./lib/ffmpeg/lib/$(Configuration);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
@@ -135,7 +135,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>D:\Study\DATN\Code\AI_server\cpp\.\lib\opencv\include;D:\Study\DATN\Code\AI_server\cpp\.\lib\onnxruntime\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\Study\DATN\Code\AI_server\cpp\.\lib\opencv\include;D:\Study\DATN\Code\AI_server\cpp\.\lib\onnxruntime\include;D:\Study\DATN\Code\AI_server\cpp\.\lib\ffmpeg\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AdditionalOptions>%(AdditionalOptions) /external:I "C:/Python311/Lib/site-packages/pybind11/include" /external:I "C:/Python311/Include"</AdditionalOptions>
       <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
       <BasicRuntimeChecks>Default</BasicRuntimeChecks>
@@ -159,10 +159,10 @@
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;VERSION_INFO=0.1.0;CMAKE_INTDIR=\"Release\";rtpimageproc_EXPORTS</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>D:\Study\DATN\Code\AI_server\cpp\.\lib\opencv\include;D:\Study\DATN\Code\AI_server\cpp\.\lib\onnxruntime\include;C:\Python311\Lib\site-packages\pybind11\include;C:\Python311\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\Study\DATN\Code\AI_server\cpp\.\lib\opencv\include;D:\Study\DATN\Code\AI_server\cpp\.\lib\onnxruntime\include;D:\Study\DATN\Code\AI_server\cpp\.\lib\ffmpeg\include;C:\Python311\Lib\site-packages\pybind11\include;C:\Python311\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Midl>
-      <AdditionalIncludeDirectories>D:\Study\DATN\Code\AI_server\cpp\.\lib\opencv\include;D:\Study\DATN\Code\AI_server\cpp\.\lib\onnxruntime\include;C:\Python311\Lib\site-packages\pybind11\include;C:\Python311\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\Study\DATN\Code\AI_server\cpp\.\lib\opencv\include;D:\Study\DATN\Code\AI_server\cpp\.\lib\onnxruntime\include;D:\Study\DATN\Code\AI_server\cpp\.\lib\ffmpeg\include;C:\Python311\Lib\site-packages\pybind11\include;C:\Python311\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
@@ -170,8 +170,8 @@
       <ProxyFileName>%(Filename)_p.c</ProxyFileName>
     </Midl>
     <Link>
-      <AdditionalDependencies>opencv_world4110.lib;onnxruntime.lib;C:\Python311\libs\python311.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
-      <AdditionalLibraryDirectories>D:/Study/DATN/Code/AI_server/cpp/./lib/opencv/lib;D:/Study/DATN/Code/AI_server/cpp/./lib/opencv/lib/$(Configuration);D:/Study/DATN/Code/AI_server/cpp/./lib/onnxruntime/lib;D:/Study/DATN/Code/AI_server/cpp/./lib/onnxruntime/lib/$(Configuration);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>opencv_world4110.lib;onnxruntime.lib;avcodec.lib;avformat.lib;avutil.lib;swscale.lib;C:\Python311\libs\python311.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>D:/Study/DATN/Code/AI_server/cpp/./lib/opencv/lib;D:/Study/DATN/Code/AI_server/cpp/./lib/opencv/lib/$(Configuration);D:/Study/DATN/Code/AI_server/cpp/./lib/onnxruntime/lib;D:/Study/DATN/Code/AI_server/cpp/./lib/onnxruntime/lib/$(Configuration);D:/Study/DATN/Code/AI_server/cpp/./lib/ffmpeg/lib;D:/Study/DATN/Code/AI_server/cpp/./lib/ffmpeg/lib/$(Configuration);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
       <GenerateDebugInformation>false</GenerateDebugInformation>
       <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
@@ -185,7 +185,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>D:\Study\DATN\Code\AI_server\cpp\.\lib\opencv\include;D:\Study\DATN\Code\AI_server\cpp\.\lib\onnxruntime\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\Study\DATN\Code\AI_server\cpp\.\lib\opencv\include;D:\Study\DATN\Code\AI_server\cpp\.\lib\onnxruntime\include;D:\Study\DATN\Code\AI_server\cpp\.\lib\ffmpeg\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AdditionalOptions>%(AdditionalOptions) /external:I "C:/Python311/Lib/site-packages/pybind11/include" /external:I "C:/Python311/Include"</AdditionalOptions>
       <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
       <BasicRuntimeChecks>Default</BasicRuntimeChecks>
@@ -209,10 +209,10 @@
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;VERSION_INFO=0.1.0;CMAKE_INTDIR=\"MinSizeRel\";rtpimageproc_EXPORTS</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>D:\Study\DATN\Code\AI_server\cpp\.\lib\opencv\include;D:\Study\DATN\Code\AI_server\cpp\.\lib\onnxruntime\include;C:\Python311\Lib\site-packages\pybind11\include;C:\Python311\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\Study\DATN\Code\AI_server\cpp\.\lib\opencv\include;D:\Study\DATN\Code\AI_server\cpp\.\lib\onnxruntime\include;D:\Study\DATN\Code\AI_server\cpp\.\lib\ffmpeg\include;C:\Python311\Lib\site-packages\pybind11\include;C:\Python311\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Midl>
-      <AdditionalIncludeDirectories>D:\Study\DATN\Code\AI_server\cpp\.\lib\opencv\include;D:\Study\DATN\Code\AI_server\cpp\.\lib\onnxruntime\include;C:\Python311\Lib\site-packages\pybind11\include;C:\Python311\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\Study\DATN\Code\AI_server\cpp\.\lib\opencv\include;D:\Study\DATN\Code\AI_server\cpp\.\lib\onnxruntime\include;D:\Study\DATN\Code\AI_server\cpp\.\lib\ffmpeg\include;C:\Python311\Lib\site-packages\pybind11\include;C:\Python311\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
@@ -220,8 +220,8 @@
       <ProxyFileName>%(Filename)_p.c</ProxyFileName>
     </Midl>
     <Link>
-      <AdditionalDependencies>opencv_world4110.lib;onnxruntime.lib;C:\Python311\libs\python311.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
-      <AdditionalLibraryDirectories>D:/Study/DATN/Code/AI_server/cpp/./lib/opencv/lib;D:/Study/DATN/Code/AI_server/cpp/./lib/opencv/lib/$(Configuration);D:/Study/DATN/Code/AI_server/cpp/./lib/onnxruntime/lib;D:/Study/DATN/Code/AI_server/cpp/./lib/onnxruntime/lib/$(Configuration);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>opencv_world4110.lib;onnxruntime.lib;avcodec.lib;avformat.lib;avutil.lib;swscale.lib;C:\Python311\libs\python311.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>D:/Study/DATN/Code/AI_server/cpp/./lib/opencv/lib;D:/Study/DATN/Code/AI_server/cpp/./lib/opencv/lib/$(Configuration);D:/Study/DATN/Code/AI_server/cpp/./lib/onnxruntime/lib;D:/Study/DATN/Code/AI_server/cpp/./lib/onnxruntime/lib/$(Configuration);D:/Study/DATN/Code/AI_server/cpp/./lib/ffmpeg/lib;D:/Study/DATN/Code/AI_server/cpp/./lib/ffmpeg/lib/$(Configuration);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
       <GenerateDebugInformation>false</GenerateDebugInformation>
       <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
@@ -235,7 +235,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>D:\Study\DATN\Code\AI_server\cpp\.\lib\opencv\include;D:\Study\DATN\Code\AI_server\cpp\.\lib\onnxruntime\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\Study\DATN\Code\AI_server\cpp\.\lib\opencv\include;D:\Study\DATN\Code\AI_server\cpp\.\lib\onnxruntime\include;D:\Study\DATN\Code\AI_server\cpp\.\lib\ffmpeg\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AdditionalOptions>%(AdditionalOptions) /external:I "C:/Python311/Lib/site-packages/pybind11/include" /external:I "C:/Python311/Include"</AdditionalOptions>
       <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
       <BasicRuntimeChecks>Default</BasicRuntimeChecks>
@@ -258,10 +258,10 @@
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;VERSION_INFO=0.1.0;CMAKE_INTDIR=\"RelWithDebInfo\";rtpimageproc_EXPORTS</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>D:\Study\DATN\Code\AI_server\cpp\.\lib\opencv\include;D:\Study\DATN\Code\AI_server\cpp\.\lib\onnxruntime\include;C:\Python311\Lib\site-packages\pybind11\include;C:\Python311\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\Study\DATN\Code\AI_server\cpp\.\lib\opencv\include;D:\Study\DATN\Code\AI_server\cpp\.\lib\onnxruntime\include;D:\Study\DATN\Code\AI_server\cpp\.\lib\ffmpeg\include;C:\Python311\Lib\site-packages\pybind11\include;C:\Python311\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Midl>
-      <AdditionalIncludeDirectories>D:\Study\DATN\Code\AI_server\cpp\.\lib\opencv\include;D:\Study\DATN\Code\AI_server\cpp\.\lib\onnxruntime\include;C:\Python311\Lib\site-packages\pybind11\include;C:\Python311\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\Study\DATN\Code\AI_server\cpp\.\lib\opencv\include;D:\Study\DATN\Code\AI_server\cpp\.\lib\onnxruntime\include;D:\Study\DATN\Code\AI_server\cpp\.\lib\ffmpeg\include;C:\Python311\Lib\site-packages\pybind11\include;C:\Python311\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
@@ -269,8 +269,8 @@
       <ProxyFileName>%(Filename)_p.c</ProxyFileName>
     </Midl>
     <Link>
-      <AdditionalDependencies>opencv_world4110.lib;onnxruntime.lib;C:\Python311\libs\python311.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
-      <AdditionalLibraryDirectories>D:/Study/DATN/Code/AI_server/cpp/./lib/opencv/lib;D:/Study/DATN/Code/AI_server/cpp/./lib/opencv/lib/$(Configuration);D:/Study/DATN/Code/AI_server/cpp/./lib/onnxruntime/lib;D:/Study/DATN/Code/AI_server/cpp/./lib/onnxruntime/lib/$(Configuration);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>opencv_world4110.lib;onnxruntime.lib;avcodec.lib;avformat.lib;avutil.lib;swscale.lib;C:\Python311\libs\python311.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>D:/Study/DATN/Code/AI_server/cpp/./lib/opencv/lib;D:/Study/DATN/Code/AI_server/cpp/./lib/opencv/lib/$(Configuration);D:/Study/DATN/Code/AI_server/cpp/./lib/onnxruntime/lib;D:/Study/DATN/Code/AI_server/cpp/./lib/onnxruntime/lib/$(Configuration);D:/Study/DATN/Code/AI_server/cpp/./lib/ffmpeg/lib;D:/Study/DATN/Code/AI_server/cpp/./lib/ffmpeg/lib/$(Configuration);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>

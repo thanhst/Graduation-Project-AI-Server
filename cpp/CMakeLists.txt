@@ -23,12 +23,24 @@ set(ONNXRUNTIME_DIR "./lib/onnxruntime")
 include_directories(${ONNXRUNTIME_DIR}/include)
 link_directories(${ONNXRUNTIME_DIR}/lib)
 
+set(FFMPEG_DIR "./lib/ffmpeg")
+include_directories(${FFMPEG_DIR}/include)
+link_directories(${FFMPEG_DIR}/lib)
+
+set(FFMPEG_LIBS
+    avcodec
+    avformat
+    avutil
+    swscale
+)
+
 add_library(rtpimageproc MODULE rtp_image_process.cpp)
 target_link_libraries(rtpimageproc
     PRIVATE
     pybind11::module
     opencv_world4110
     onnxruntime
+    ${FFMPEG_LIBS}
 )
 
 target_compile_definitions(rtpimageproc PRIVATE VERSION_INFO=0.1.0)
