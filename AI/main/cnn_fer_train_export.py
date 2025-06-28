@@ -48,7 +48,7 @@ def main():
     test_loader  = DataLoader(test_dataset,  batch_size=64, shuffle=False)
     
     model = CNNFER().to(device)
-    optimizer = optim.Adam(model.parameters(), lr=0.001)
+    optimizer = optim.Adam(model.parameters(), lr=0.0005)
     criterion = nn.CrossEntropyLoss()
 
     train(model, train_loader, optimizer, criterion, device, epochs=100)

@@ -31,3 +31,4 @@ def main():
                     input_names=['input'], output_names=['output'],
                     opset_version=17)
     print("Exported model to cnn_fer.onnx")
+main()

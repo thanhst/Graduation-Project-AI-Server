@@ -69,6 +69,8 @@ def train(model, dataloader, optimizer, criterion, device, epochs=10):
             optimizer.zero_grad()
             outputs = model(inputs)
             loss = criterion(outputs, labels)
+            if torch.isnan(loss) or torch.isinf(loss):
+                continue
             loss.backward()
             optimizer.step()
             total_loss += loss.item()
