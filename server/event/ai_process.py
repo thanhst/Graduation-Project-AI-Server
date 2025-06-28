@@ -1,11 +1,6 @@
-import numpy as np
 import json
 from service.variable_service import rtp_queue, manager
 from ai.rtp_process import rtpimageproc
-import os
-import tempfile
-import cv2
-import ffmpeg
 
 
 async def ai_processor():
