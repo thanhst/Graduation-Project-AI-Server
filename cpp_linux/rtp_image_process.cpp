@@ -46,7 +46,6 @@ std::filesystem::path get_module_dir()
 }
 
 
-// ONNX Runtime setup
 Ort::Env *env = nullptr;
 Ort::Session *session = nullptr;
 static std::mutex init_mutex;
@@ -83,7 +82,6 @@ void cleanup_onnx()
     env = nullptr;
 }
 
-// Simulated decode
 cv::Mat decode_h264(const std::vector<uint8_t> &encoded)
 {
 
@@ -124,14 +122,13 @@ cv::Mat decode_h264(const std::vector<uint8_t> &encoded)
 
     cv::Mat img(frame->height, frame->width, CV_8UC3, buffer.data());
 
-    // cleanup
     sws_freeContext(sws);
     av_frame_free(&frame);
     av_frame_free(&rgb);
     av_packet_free(&pkt);
     avcodec_free_context(&ctx);
 
-    return img.clone(); // clone to own memory
+    return img.clone();
 }
 
 cv::Mat decode_vp8(const std::vector<uint8_t> &encoded)
@@ -181,10 +178,9 @@ cv::Mat decode_vp8(const std::vector<uint8_t> &encoded)
     av_packet_free(&pkt);
     avcodec_free_context(&ctx);
 
-    return img.clone(); // return a deep copy to avoid using freed memory
+    return img.clone();
 }
 
-// Face detection
 cv::CascadeClassifier &get_face_cascade()
 {
     static cv::CascadeClassifier face_cascade;
@@ -202,7 +198,6 @@ cv::CascadeClassifier &get_face_cascade()
     return face_cascade;
 }
 
-// Process ảnh RTP thành tensor
 py::array_t<float> process_rtp_image(py::bytes rtp_payload_py, const std::string &codec_type)
 {
     std::string rtp_payload_str = rtp_payload_py;
@@ -236,18 +231,15 @@ py::array_t<float> process_rtp_image(py::bytes rtp_payload_py, const std::string
     {
         throw std::runtime_error("Image decode failed");
     }
-    // ✅ Chuyển sang grayscale
     cv::cvtColor(img, img, cv::COLOR_BGR2GRAY);
     cv::resize(img, img, cv::Size(IMG_SIZE, IMG_SIZE));
     img.convertTo(img, CV_32FC1, 1.0 / 255.0);
     img = (img - 0.5f) / 0.5f;
-    // ✅ CHW với 1 channel (C = 1)
     std::vector<float> chw_data(IMG_SIZE * IMG_SIZE);
     for (int h = 0; h < IMG_SIZE; ++h)
         for (int w = 0; w < IMG_SIZE; ++w)
             chw_data[h * IMG_SIZE + w] = img.at<float>(h, w);
 
-    // ✅ shape: (1, 1, 48, 48)
     return py::array(py::buffer_info(
         chw_data.data(),
         sizeof(float),
@@ -296,17 +288,16 @@ std::string infer_emotion_from_image(py::array_t<uint8_t> image_array)
     int width = static_cast<int>(buf.shape[1]);
 
     cv::Mat img(height, width, CV_8UC3, (unsigned char *)buf.ptr);
-    cv::cvtColor(img, img, cv::COLOR_BGR2GRAY); // CHUYỂN GRAYSCALE
+    cv::cvtColor(img, img, cv::COLOR_BGR2GRAY);
     cv::resize(img, img, cv::Size(IMG_SIZE, IMG_SIZE));
-    img.convertTo(img, CV_32FC1, 1.0 / 255.0); // CHUYỂN float 1 channel
 
-    std::vector<float> chw_data(IMG_SIZE * IMG_SIZE); // CHỈ 1 CHANNEL
+    std::vector<float> chw_data(IMG_SIZE * IMG_SIZE);
     for (int h = 0; h < IMG_SIZE; ++h)
         for (int w = 0; w < IMG_SIZE; ++w)
-            chw_data[h * IMG_SIZE + w] = img.at<float>(h, w);
+            chw_data[h * IMG_SIZE + w] = (img.at<float>(h, w) - 0.5f) / 0.5f;
 
     auto mem_info = Ort::MemoryInfo::CreateCpu(OrtDeviceAllocator, OrtMemTypeCPU);
-    const std::array<int64_t, 4> input_shape{1, 1, IMG_SIZE, IMG_SIZE}; // 1 CHANNEL
+    const std::array<int64_t, 4> input_shape{1, 1, IMG_SIZE, IMG_SIZE};
     Ort::Value input_tensor = Ort::Value::CreateTensor<float>(mem_info, chw_data.data(), chw_data.size(), input_shape.data(), input_shape.size());
 
     const char *input_names[] = {"input"};
@@ -315,7 +306,6 @@ std::string infer_emotion_from_image(py::array_t<uint8_t> image_array)
 
     float *output_data = output_tensors[0].GetTensorMutableData<float>();
     int max_index = static_cast<int>(std::max_element(output_data, output_data + 7) - output_data);
-    std::cout << "✅ Đã chạy xong ONNX inference!" << std::endl;
 
     static const std::vector<std::string> emotions = {"Angry", "Disgust", "Fear", "Happy", "Sad", "Surprise", "Neutral"};
     return emotions[max_index];

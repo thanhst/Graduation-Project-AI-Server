@@ -2,7 +2,6 @@ cmake_minimum_required(VERSION 3.10)
 set(CMAKE_CXX_STANDARD 17)
 project(rtpimageproc)
 
-#find package of python3
 find_package(Python3 COMPONENTS Interpreter Development REQUIRED)
 
 execute_process(
@@ -13,12 +12,10 @@ execute_process(
 list(APPEND CMAKE_PREFIX_PATH ${pybind11_DIR})
 find_package(pybind11 REQUIRED)
 
-# OpenCV
 set(OPENCV_DIR "./lib/opencv")
 include_directories(${OPENCV_DIR}/include)
 link_directories(${OPENCV_DIR}/lib)
 
-# ONNX Runtime
 set(ONNXRUNTIME_DIR "./lib/onnxruntime")
 include_directories(${ONNXRUNTIME_DIR}/include)
 link_directories(${ONNXRUNTIME_DIR}/lib)
@@ -45,5 +42,4 @@ target_link_libraries(rtpimageproc
 
 target_compile_definitions(rtpimageproc PRIVATE VERSION_INFO=0.1.0)
 
-# Đặt tên file output là .pyd thay vì .so/.dll
 set_target_properties(rtpimageproc PROPERTIES PREFIX "" SUFFIX ".pyd")

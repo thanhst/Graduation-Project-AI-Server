@@ -12,19 +12,18 @@ from torchvision.datasets import ImageFolder
 from tqdm import tqdm
 from module.CNN import CNNFER,train,test
 
-# ---------------------- Main ----------------------
 def main():
     print("Torch version:", torch.__version__)
     print("CUDA available:", torch.cuda.is_available())
     print("CUDA version:", torch.version.cuda)
     print("Device name:", torch.cuda.get_device_name(0) if torch.cuda.is_available() else "None")
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-    print(f"✅ Using device: {device}")
+    print(f"Using device: {device}")
     if device.type == 'cuda':
-        print(f"✅ GPU Name: {torch.cuda.get_device_name(0)}")
-        print(f"✅ CUDA is available: {torch.cuda.is_available()}")
+        print(f"GPU Name: {torch.cuda.get_device_name(0)}")
+        print(f"CUDA is available: {torch.cuda.is_available()}")
     else:
-        print("⚠️ WARNING: Running on CPU")
+        print("WARNING: Running on CPU")
     train_transform = transforms.Compose([
         transforms.Grayscale(num_output_channels=1),
         transforms.RandomHorizontalFlip(),
@@ -53,10 +52,7 @@ def main():
 
     train(model, train_loader, optimizer, criterion, device, epochs=100)
     test(model, test_loader, device)
-    # Save PyTorch model
     torch.save(model.state_dict(), './model/cnn_fer.pth')
-
-    # Export to ONNX
     dummy_input = torch.randn(1, 1, 48, 48).to(device)
     model.eval()
     torch.onnx.export(model, dummy_input, './model/cnn_fer.onnx',

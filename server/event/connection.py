@@ -30,7 +30,6 @@ async def handle_connection(websocket):
                 print("WebSocket closed or send failed:", e)
 
     except Exception as e:
-            # await websocket.send("ERROR")
             print(e)
     finally:
         if user_id:

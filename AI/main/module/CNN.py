@@ -11,7 +11,6 @@ import seaborn as sns
 import matplotlib.pyplot as plt
 from sklearn.metrics import confusion_matrix, classification_report
 
-# ---------------------- CNN Model ----------------------
 class CNNFER(nn.Module):
     def __init__(self):
         super(CNNFER, self).__init__()
@@ -52,7 +51,6 @@ class CNNFER(nn.Module):
         return x
     
 
-# ---------------------- Train Function ----------------------
 def train(model, dataloader, optimizer, criterion, device, epochs=10):
     model.train()
     best_loss = float('inf')
@@ -92,7 +90,6 @@ def train(model, dataloader, optimizer, criterion, device, epochs=10):
             break
         
 
-# ---------------------- Test ----------------------
 def test(model, dataloader, device):
     emotion_labels = ['Angry', 'Disgust', 'Fear', 'Happy', 'Sad', 'Surprise', 'Neutral']
     model.eval()
@@ -113,7 +110,7 @@ def test(model, dataloader, device):
     correct = sum(p == t for p, t in zip(all_preds, all_labels))
     total = len(all_labels)
     accuracy = correct / total
-    print(f"✅ Accuracy: {accuracy:.4f}")
+    print(f"Accuracy: {accuracy:.4f}")
 
     cm = confusion_matrix(all_labels, all_preds)
     plt.figure(figsize=(8, 6))
@@ -123,5 +120,5 @@ def test(model, dataloader, device):
     plt.title("Confusion Matrix")
     plt.show()
 
-    print("\n📊 Classification Report:")
+    print("\n Classification Report:")
     print(classification_report(all_labels, all_preds, target_names=emotion_labels))

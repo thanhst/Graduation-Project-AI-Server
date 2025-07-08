@@ -17,12 +17,12 @@ def main():
     print("CUDA version:", torch.version.cuda)
     print("Device name:", torch.cuda.get_device_name(0) if torch.cuda.is_available() else "None")
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-    print(f"✅ Using device: {device}")
+    print(f"Using device: {device}")
     if device.type == 'cuda':
-        print(f"✅ GPU Name: {torch.cuda.get_device_name(0)}")
-        print(f"✅ CUDA is available: {torch.cuda.is_available()}")
+        print(f"GPU Name: {torch.cuda.get_device_name(0)}")
+        print(f"CUDA is available: {torch.cuda.is_available()}")
     else:
-        print("⚠️ WARNING: Running on CPU")
+        print("WARNING: Running on CPU")
     model = CNNFER().to(device)
     model.load_state_dict(torch.load("./model/cnn_fer.pth", map_location=device,weights_only=True))
     model.eval()

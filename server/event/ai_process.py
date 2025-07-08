@@ -9,7 +9,6 @@ async def ai_processor():
             user_id, payload,codec = await rtp_queue.get()
             ws = await manager.get_connection(user_id)
             
-            # print("Running for recognite")
             if(codec=="video/VP8"):
                 codectype="VP8"
             else:

@@ -33,7 +33,6 @@ def test(model, dataloader, device, class_names):
     macro = report["macro avg"]
     print(f"\n🔎 Macro Average — Precision: {macro['precision']:.4f}, Recall: {macro['recall']:.4f}, F1-score: {macro['f1-score']:.4f}")
 
-    # 📊 Confusion Matrix
     cm = confusion_matrix(all_labels, all_preds)
     plt.figure(figsize=(8, 6))
     sns.heatmap(cm, annot=True, fmt="d",
@@ -46,8 +45,7 @@ def test(model, dataloader, device, class_names):
     plt.tight_layout()
     plt.show()
 
-    # 📋 Classification Report
-    print("\n📊 Classification Report:")
+    print("\n Classification Report:")
     per_class_acc = cm.diagonal() / cm.sum(axis=1)
 
     for cls in class_names:
@@ -57,7 +55,6 @@ def test(model, dataloader, device, class_names):
         print(f"{cls:<10s} | Precision: {precision:.2f} | Recall: {recall:.2f} | F1: {f1:.2f}")
     
 
-    # 📈 Vẽ biểu đồ đường (Line Chart)
     df_report = pd.DataFrame(report).transpose()
     df_plot = df_report.loc[class_names, ['precision', 'recall', 'f1-score']]
     

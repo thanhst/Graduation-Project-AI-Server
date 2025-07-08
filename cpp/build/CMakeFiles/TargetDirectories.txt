@@ -1,3 +1,3 @@
-/mnt/d/Study/DATN/Code/AI_server/cpp/build/CMakeFiles/rtpimageproc.dir
-/mnt/d/Study/DATN/Code/AI_server/cpp/build/CMakeFiles/edit_cache.dir
-/mnt/d/Study/DATN/Code/AI_server/cpp/build/CMakeFiles/rebuild_cache.dir
+D:/Study/DATN/Code/AI_server/cpp/build/CMakeFiles/rtpimageproc.dir
+D:/Study/DATN/Code/AI_server/cpp/build/CMakeFiles/ALL_BUILD.dir
+D:/Study/DATN/Code/AI_server/cpp/build/CMakeFiles/ZERO_CHECK.dir
